@@ -12,7 +12,7 @@
     margin: 0;
     padding: 0;
     outline: none;
-    text-decoration: none;
+    text-decoration: none !important;
     border: none;
     text-transform: capitalize;
     transition: 0.2s linear;
@@ -25,10 +25,6 @@ body {
 .header .logo img {
     border-radius: 50%;
     width: 7rem;
-}
-
-.container-image {
-    
 }
 
 section {
@@ -141,7 +137,7 @@ section {
     color: #fff;   
 }
 
-.about .row {
+.space .row {
     display: flex;
     align-items: center;
     background-color: black;
@@ -150,16 +146,27 @@ section {
 
 }
 
-.about .row .content h3 {
+.space .row .content h3 {
     font-size: 4rem;
     color:#fff;
 }
 
-.about .row .content p {
+.space .row .content p {
     font-size: 1.6rem;
     color: #fff;
     padding: 1rem 0;
     line-height: 1.8;
+}
+
+.space .row .container-image {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.space .row .container-image img{
+    border: 1px solid var(--main-color);
 }
 
 .box-container {
@@ -194,7 +201,7 @@ section {
 
 .menu .box-container .box .price span {
     font-size: 1.5rem;
-    text-decoration: line-through; /*Risca o nome*/
+    text-decoration: line-through !important; /*Risca o nome*/
     font-weight: lighter;
 }
 
@@ -252,6 +259,8 @@ section {
     cursor: pointer;
     border-radius: 50%;
     padding: 1rem;
+    width: 5rem;
+    height: 5rem;
 }
 
 .footer .share img:hover {
