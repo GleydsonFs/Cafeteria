@@ -87,6 +87,7 @@ section {
 }
 
 .btn:hover {
+    background: var(--main-color);
     transform: scale(1.05);
     box-shadow: 0 0 5px var(--main-color),
         0 0 20px var(--main-color);
@@ -130,7 +131,7 @@ section {
     font-size: 4rem;
     color: var(--main-color);
     text-align: center;
-    margin-bottom: 5rem;
+    margin-bottom: 3rem;
 }
 
 .tittle span {
@@ -205,14 +206,14 @@ section {
     font-weight: lighter;
 }
 
-.menu .box-container .box:hover {
+/*.menu .box-container .box:hover {
     background-color: #fff;
 }
 
-.menu .box-container .box:hover>* {
-    /*aplica o hover para todos os elementos do box*/
+/*.menu .box-container .box:hover>* {
+    /*aplica o hover para todos os elementos do box
     color: var(--black);
-}
+}*/
 
 .review .box-container .box {
     border: var(--border);
@@ -241,10 +242,67 @@ section {
 }
 
 .address {
-    display: flex; /*Lado a lado*/
-    align-items: center;
-    flex-direction: column; /* um acima do outro*/
+    padding: 0 10rem 0 10rem;
+    
 }
+
+.address h1{
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    font-size: 3rem;
+    margin-top: 3rem;
+}
+
+.container-form {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+form {
+    background-color: #13131a;
+    padding: 2rem;
+    width: 50rem;
+    height: auto;
+}
+
+form h3{
+    text-align: center;
+    color: #fff;
+    font-size: 2rem;
+}
+
+.address .container-form .map {
+    width: 100%;
+    flex: 1.45rem;
+    object-fit: cover;
+}
+
+.input-form p{
+    font-size: 1.5rem;
+    position: relative;
+    left: 15px;
+    top: 5px;
+}
+
+.input-form {
+    display: flex;
+    align-items: center;
+    padding: 0 0 0 1rem;
+    margin-top: 1rem;
+    color: #fff;
+}
+
+.address .tittle {
+    font-size: 4rem;
+    color: var(--main-color);
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
 
 .footer{
     text-align: center;
@@ -252,6 +310,10 @@ section {
 
 .footer .share {
     padding: 1rem 0;
+}
+
+.footer .share h2 {
+    color: #fff;
 }
 
 .footer .share img {
