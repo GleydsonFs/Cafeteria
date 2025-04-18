@@ -48,7 +48,7 @@
             alt="shopping-cart--v1"
           />
         </div>
-      </section>
+      </div>
       <!--section-->
       
     </header>
@@ -58,68 +58,86 @@
       <section id="home">
         <!--ID direciona para home ao clicar-->
         <div class="content">
-          <h3>CONHEÇA O MELHOR CAFÉ DA REGIÃO</h3>
+          <h3>CONHEÇA O MELHOR CAFÉ DE ARACAJU</h3>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis non
             id ducimus illo placeat? Quia neque similique exercitationem
             quisquam voluptate. Voluptate repellat quibusdam sunt quaerat odit
             itaque iure delectus dolor.
           </p>
-          <a href="#menu" class="btn">PEÇA O SEU AGORA</a>
+          <a href="#menu" target="" class="btn">PEÇA O SEU AGORA</a>
         </div>
       </section>
     </div>
 
     <section class="menu" id="menu">
-      <h2 class="tittle">NOSSO<span> CARDÁPIO</span></h2>
+      <h2 class="tittle">ESCOLHA<span> SEU ITEM</span></h2>
 
       <div class="box-container">
         <div class="box">
-          <a href="cardapio.html"><img src="img/menu-1.png" alt="item-1" /></a> 
-          <h3><a href="cardapio.html">Cafés</a></h3>
-          <div class="price">R$ 15,99 <span>R$20,99</span></div>
+          <img src="img/menu-1.png" alt="item-1" />
+          <h3>Cafés</h3>
+          <a href="#menu"></a>
+          <a href="cardapio.html" class="btn-menu">PEÇA O SEU</a>
+          
+          <!-- <div class="price">R$ 15,99 <span>R$20,99</span></div> -->
           
         </div>
 
         <div class="box">
           <a href="cardapio.html"><img src="img/chá.png" alt="item-1" /></a>
-          <h3><a href="cardapio.html">Chás Gourmet</a></h3>
-          <div class="price">R$ 15,99 <span>R$20,99</span></div>
+          <h3>Chás Gourmet</h3>
+          <a href="cardapio.html" class="btn-menu">PEÇA O SEU</a>
+          <!-- <div class="price">R$ 15,99 <span>R$20,99</span></div> -->
+          
+        </div>
+
+        <div class="box">
+          <a href="cardapio.html"><img src="/img/chocolate.png" alt="item-1" /></a>
+          <h3>Chocolates</h3>
+          <a href="cardapio.html" class="btn-menu">PEÇA O SEU</a>
+          
+          <!-- <div class="price">R$ 15,99 <span>R$20,99</span></div> -->
           
         </div>
 
         <div class="box">
           <a href="cardapio.html"><img src="img/coke.png" alt="item-1" /></a>
-          <h3><a href="cardapio.html">Refrigerantes</a></h3>
-          <div class="price">R$ 15,99 <span>R$20,99</span></div>
+          <h3>Refrigerantes</h3>
+          <a href="cardapio.html" class="btn-menu">PEÇA O SEU</a>
+          <!-- <div class="price">R$ 15,99 <span>R$20,99</span></div> -->
           
         </div>
 
         <div class="box">
           <a href="cardapio.html"><img src="img/suco.png" alt="item-1" /></a>
-          <h3><a href="cardapio.html">Águas e Sucos</a></h3>
-          <div class="price">R$ 15,99 <span>R$20,99</span></div>
+          <h3>Águas e Sucos</h3>
+          <a href="cardapio.html" class="btn-menu">PEÇA O SEU</a>
+          <!-- <div class="price">R$ 15,99 <span>R$20,99</span></div> -->
           
         </div>
 
         <div class="box">
           <a href="cardapio.html"><img src="img/cerveja2.png" alt="item-1" /></a>
-          <h3><a href="cardapio.html">Cervejas</a></h3>
-          <div class="price">R$ 15,99 <span>R$20,99</span></div>
+          <h3>Cervejas</h3>
+          <a href="cardapio.html" class="btn-menu">PEÇA O SEU</a>
+          <!-- <div class="price">R$ 15,99 <span>R$20,99</span></div> -->
           
         </div>
 
         <div class="box">
           <a href="cardapio.html"><img src="img/bolo.png" alt="item-1" /></a>
-          <h3><a href="cardapio.html">Tortas e Bolos</a></h3>
-          <div class="price">R$ 15,99 <span>R$20,99</span></div>
+          <h3>Tortas e Bolos</h3>
+          <a href="cardapio.html" class="btn-menu">PEÇA O SEU</a>
+          <!-- <div class="price">R$ 15,99 <span>R$20,99</span></div> -->
           
         </div>
 
         <div class="box">
           <a href="cardapio.html"><img src="img/torta.png" alt="item-1" /></a>
-          <h3><a href="cardapio.html">Salgados</a></h3>
-          <div class="price">R$ 15,99 <span>R$20,99</span></div>
+          <h3>Salgados</h3>
+          <a href="cardapio.html" class="btn-menu">PEÇA O SEU</a>
+          <!-- <div class="price">R$ 15,99 <span>R$20,99</span></div> -->
         </div>
       </div>
     </section>
@@ -283,7 +301,7 @@
     </section>
 
     <section class="address" id="address">
-        <h1 class="tittle">ENDEREÇO E <span> FUNCIONAMENTO</span></h1>
+        <h2 class="tittle">ENDEREÇO E <span> FUNCIONAMENTO</span></h2>
         <div class="container-form">
           <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15667.151384329529!2d-37.050601!3d-10.97938!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x71ab13afd866505%3A0xbfae1878dfdd652e!2sCasa%20Caf%C3%A9!5e0!3m2!1spt-BR!2sbr!4v1735561352078!5m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 

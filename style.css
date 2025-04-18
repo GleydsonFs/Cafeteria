@@ -15,6 +15,7 @@
     text-decoration: none !important;
     border: none;
     transition: 0.2s linear;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -24,12 +25,14 @@ body {
 .header .logo img {
     border-radius: 50%;
     width: 7rem;
+   
 }
 
 section {
     padding: 3rem 2rem;
     margin: 0 auto;
-    max-width: 1200px;
+    max-width: 1300px;
+    padding-top: 12rem;
 }
 
 .header {
@@ -63,8 +66,9 @@ section {
     
 }
 
+
 .icons img {
-    margin: 1rem;
+    margin: 1rem ;
     cursor: pointer;
 }
 
@@ -92,6 +96,30 @@ section {
         0 0 20px var(--main-color);
     }
 
+
+
+.btn-menu {
+    background: var(--main-color);
+    color: var(--bg);
+    font-weight: 600;
+    padding: 1rem 2rem;
+    font-size: 1.7rem;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+    transition: 0.3s ease-in-out;
+    }
+    
+.btn-menu:hover {
+    background: var(--main-color);
+    transform: scale(1.05);
+    box-shadow: 0 0 5px var(--main-color),
+        0 0 20px var(--main-color);
+    }
+
+.btn-menu  a {
+    color: #010103;
+}
 .home-container {
     background: url("img/home-img.jpg");
     height: 100vh;
@@ -101,6 +129,7 @@ section {
 
 .content {
     max-width: 60rem;
+   
 }
 
 .content h3 {
@@ -124,6 +153,7 @@ section {
 
 .box img {
     max-width: 100px;
+    border-radius: 50%;
 }
 
 .tittle {
@@ -146,7 +176,7 @@ section {
 
 }
 
-.space .row .content h3 {
+.space .row .content h2 {
     font-size: 4rem;
     color:#fff;
 }
@@ -170,14 +200,14 @@ section {
 }
 
 .box-container {
-    gap: 1.5rem;
     cursor: pointer;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    gap: 1.5rem;
 }
 
 .box-container a {
-    color: #fff;
+    color: #000;
 }
 
 
@@ -185,6 +215,7 @@ section {
     text-align: center;
     border: var(--border);
     padding: 1.7rem;
+    
 }
 
 .menu .box-container .box img {
@@ -221,7 +252,8 @@ section {
 .review .box-container .box {
     border: var(--border);
     text-align: center;
-    padding: 5rem 2rem;
+    padding: 3rem 2rem;
+    margin: 10px;
 }
 
 .review .box-container .box p {
@@ -244,7 +276,11 @@ section {
     border-radius: 50% ;
 }
 
-
+.review .box-container .box user {
+    height: 7rem;
+    width: 7rem;
+    border-radius: 50%;
+}
 
 .container-form {
     display: flex;
@@ -285,11 +321,11 @@ form h3{
 
 }
 
-.address h1 {
+.address h2 {
     align-items: center;
     text-align: center;
     color: #fff;
-    font-size: 3rem;
+    
     margin-top: 1rem;
 }
 
@@ -302,10 +338,10 @@ form h3{
 }
 
 .address .tittle {
-    font-size: 4rem;
     color: var(--main-color);
     text-align: center;
-    margin-bottom: 3rem;
+    padding-top: 9rem;
+
 }
 .footer{
     text-align: center;
@@ -330,4 +366,12 @@ form h3{
 
 .footer .share img:hover {
     background-color: var(--main-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--main-color);
+}
+
+::-webkit-scrollbar {
+    width: 20px; 
 }
