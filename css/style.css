@@ -32,7 +32,7 @@ section {
     padding: 3rem 2rem;
     margin: 0 auto;
     max-width: 1300px;
-    padding-top: 12rem;
+    padding-top: 11rem;
 }
 
 .header {
@@ -52,7 +52,11 @@ section {
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
 }
-
+nav {
+    height: 50px;
+    height: 40px;
+    height: 42px;
+}
 .navbar a {
     margin: 0 2rem;
     font-size: 1.8rem;
@@ -121,7 +125,7 @@ section {
     color: #010103;
 }
 .home-container {
-    background: url("img/home-img.jpg");
+    background: url("/img/coffe-bg.png");
     height: 100vh;
     background-position: center;
     background-size: cover;
@@ -129,6 +133,7 @@ section {
 
 .content {
     max-width: 60rem;
+    margin-bottom: 13%;
    
 }
 
