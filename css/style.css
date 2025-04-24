@@ -48,7 +48,7 @@ section {
 .header section {
     display: flex;
     align-items: center; /*vertical*/
-    justify-content: space-between;
+    justify-content: center;
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
 }
@@ -68,6 +68,63 @@ nav {
     border-bottom: 0.1rem solid var(--main-color);
     padding-bottom: 0.5rem;
     
+}
+
+/* ESCILO MENU MOBILE */
+
+header .btn-menu-mob {
+    display: none;
+}
+
+
+header .btn-menu-mob .line-menumob-1 {
+    width: 30px;
+}
+
+header .btn-menu-mob .line-menumob-2 {
+    width: 20px;
+}
+
+header .btn-menu-mob div {
+    background-color: var(--main-color);
+    height: 3px;
+    margin: 10px 0;
+    transition: .2s;
+}
+
+header .btn-menu-mob .line-menumob-1.ativo1 {
+    transform: rotate(45deg) translate(30%);
+}
+
+header .btn-menu-mob .line-menumob-2.ativo2 {
+    transform: rotate(-45deg) translate(30%);
+    width: 30px;
+}
+
+header .menu-mobile {
+    width: 100%;
+    height: 100vh;
+    background-color: #000;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+header .menu-mobile ul {
+    list-style-type: none;
+}
+
+header .menu-mobile ul a{
+    font-size: 25px;
+    text-decoration: none;
+    color: #fff;
+    padding: 20px 0;
+    margin-top: 20px;
+    display: block;
 }
 
 
@@ -125,7 +182,7 @@ nav {
     color: #010103;
 }
 .home-container {
-    background: url("/img/coffe-bg.png");
+    background: url("/img/coffe-bg3.png");
     height: 100vh;
     background-position: center;
     background-size: cover;
@@ -140,7 +197,7 @@ nav {
 .content h3 {
     color: #fff;
     font-size: 5rem;
-}
+    }
 
 .content p {
     color: #fff;
@@ -195,7 +252,7 @@ nav {
 
 .space .row .container-image {
     display: flex;
-    gap: 2rem;
+    gap: 4.2rem;
     align-items: center;
     justify-content: center;
 }
@@ -379,4 +436,40 @@ form h3{
 
 ::-webkit-scrollbar {
     width: 20px; 
+}
+
+@media screen and (max-width: 900px){
+    header .navbar {
+        display: none;
+    }
+
+    header .btn-menu-mob {
+        display: block;
+    }
+
+    .home-container {
+        background: url("/img/coffe-bg3.png");
+        height: 100vh;
+
+
+
+
+
+
+        background-position: center;
+        background-size: cover;
+    }
+
+    .content h3 {
+        color: #fff;
+        font-size: 4.5rem;
+        }
+    
+    .content p {
+        color: #fff;
+        font-size: 2rem;
+        font-weight: 100;
+        line-height: 1.7;
+        padding: 1rem 0;
+    }
 }
