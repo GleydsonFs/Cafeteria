@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Painel do Atendente</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --primary: #d3ad7f;
+      --black: #13131a;
+      --bg: #010103;
+      --border: .1rem solid rgba(255,255,255,.3);
+        --sidebar-width: 230px;
+        --marrom: #a96d1f;
+      }
+
+      body {
+        background-color: var(--bg);
+        color: #fff;
+        font-family: "Roboto", sans-serif;
+        display: flex; /* Use flexbox for layout */
+      }
+
+      #sidebar {
+        width: var(--sidebar-width);
+        height: 100vh;
+        background-color: var(--black);
+        border-right: var(--border);
+        padding: 20px;
+        position: fixed; /* Fix sidebar */
+        left: 0;
+        top: 0;
+        transition: transform 0.3s ease;
+        z-index: 1000;
+        overflow-y: auto; /* Enable scrolling if content overflows */
+        display: flex;
+        flex-direction: column; /* Stack sidebar content vertically */
+      }
+
+      #sidebar.collapsed {
+        transform: translateX(calc(-1 * var(--sidebar-width)));
+      }
+
+      #main-content {
+        flex-grow: 1;
+        padding: 20px;
+        margin-left: var(--sidebar-width); /* Make space for sidebar */
+        transition: margin-left 0.3s ease;
+        width: calc(100% - var(--sidebar-width)); /* Adjust width */
+      }
+
+      #main-content.collapsed {
+        margin-left: 0;
+        width: 100%;
+      }
+
+      #main-content h4 {
+        text-align: center;
+      }
+
+      .status-select {
+        background-color: var(--marrom);
+        color: #fff;
+        width: 120px;
+        border: none;
+        text-align: center;
+        margin-right: 10px;
+      }
+
+      .custom-select {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background-color: #1c1c1c;
+        color: white;
+        border: 1px solid #ccc;
+        background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+        background-repeat: no-repeat;
+        background-position: right 0.5rem center;
+        background-size: 1rem;
+        padding-right: 2rem;
+      }
+
+      .navbar {
+        text-align: center;
+        background-color: var(--black);
+        position: fixed; /* Fix navbar */
+        top: 0;
+        left: var(--sidebar-width); /* Align with main content */
+        width: calc(100% - var(--sidebar-width));
+        z-index: 999;
+        transition: left 0.3s ease, width 0.3s ease;
+      }
+
+      .marrom {
+        background-color: var(--marrom) !important;
+        position: relative;
+        right: 20px;
+      }
+
+      .navbar.collapsed {
+        left: 0;
+        width: 100%;
+      }
+
+      .navbar-brand {
+        color: var(--primary);
+        font-weight: bold;
+        font-size: 1.5rem;
+        text-align: center;
+      }
+
+      #sidebar-toggle {
+        background: none;
+        border: none;
+        color: var(--primary);
+        font-size: 1.5rem;
+        cursor: pointer;
+        margin-right: 15px; /* Add some space */
+      }
+
+      .card {
+        background-color: var(--black);
+        border: var(--border);
+        margin-bottom: 20px;
+        transition: all 0.3s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .card-header {
+        background-color: var(--primary);
+        color: var(--black);
+        font-weight: bold;
+        display: flex; /* Use flexbox for header layout */
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .card-header .header-info {
+        flex-grow: 1; /* Allow info to take space */
+        margin-right: 10px; /* Space before minimize button */
+      }
+
+      .header-info {
+        margin-left: 5px;
+      }
+
+      .btn-minimize {
+        background: none;
+        border: none;
+        color: var(--black); /* Match header text color */
+        font-size: 1.5rem;
+        cursor: pointer;
+        padding: 0 5px; /* Add some padding */
+      }
+
+      .titulo-pedidos {
+        position: relative;
+        left: 42%;
+      }
+
+      /* Styles for minimized card */
+      .card.minimized .card-body,
+      .card.minimized .card-footer {
+        display: none;
+      }
+
+      .badge {
+        font-size: 0.9rem;
+        padding: 8px 12px;
+        margin-right: -10px;
+      }
+
+      .badge-pendente {
+        background-color: red;
+        color: #fff;
+      }
+
+      .badge-preparando {
+        background-color: #183975;
+        color: #fff;
+      }
+
+      .badge-pronto {
+        background-color: #28a745;
+        color: #fff;
+      }
+
+      .badge-entregue {
+        background-color: #6c757d;
+        color: #fff;
+      }
+
+      .btn-status {
+        margin-right: 5px;
+        margin-bottom: 5px;
+      }
+
+      .btn-secondary {
+        background-color: var(--marrom);
+        border-color: none;
+        color: #fff;
+        font-weight: 500;
+      }
+
+      .btn-primary {
+        background-color: var(--primary);
+        border-color: var(--primary);
+        color: var(--black);
+        font-weight: 500;
+      }
+
+      .btn-primary:hover,
+      .btn-secondary:hover,
+      .btn-danger:hover {
+        background-color: #c19b6c;
+        border-color: #c19b6c;
+        color: var(--black);
+      }
+
+      #btn-refresh,
+      #btn-clear-panel,
+      #btn-minimize-all {
+        justify-content: space-around;
+        background-color: var(--marrom);
+        color: #fff;
+        margin: 3px;
+        border: none;
+      }
+
+      .item-pedido {
+        border-bottom: 1px solid #333;
+        padding: 8px 0;
+      }
+
+      .item-pedido:last-child {
+        border-bottom: none;
+      }
+
+      .notification-badge {
+        position: absolute;
+        top: -8px;
+        right: -8px;
+        background-color: red;
+        color: white;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 12px;
+      }
+
+      .notification-icon {
+        position: relative;
+        margin-right: 15px;
+      }
+
+      .sound-toggle {
+        cursor: pointer;
+        color: var(--primary);
+      }
+
+      /* Sidebar History Styles */
+      #sidebar h3 {
+        color: var(--primary);
+        margin-bottom: 15px; /* Reduced margin */
+
+        padding-bottom: 10px;
+        text-align: center;
+      }
+      #history-section {
+        flex-grow: 1; /* Allow history to take available space */
+        overflow-y: auto; /* Scroll only history section */
+        margin-bottom: 15px; /* Space before export section */
+      }
+      .history-day-group h4 {
+        color: #ccc;
+        font-size: 1.1rem;
+        margin-top: 15px;
+        margin-bottom: 10px;
+        cursor: pointer;
+      }
+      .history-order-item {
+        background-color: rgba(255, 255, 255, 0.05);
+        padding: 10px;
+        margin-bottom: 8px;
+        border-radius: 5px;
+        cursor: pointer;
+        border-left: 3px solid var(--primary);
+      }
+      .history-order-item:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+      .history-order-details {
+        display: none; /* Hidden by default */
+        background-color: var(--black);
+        padding: 15px;
+        margin-top: 5px;
+        border-radius: 5px;
+        border: 1px solid var(--border);
+        font-size: 0.9rem; /* Smaller font for details */
+      }
+      .history-order-details ul {
+        padding-left: 20px; /* Indent list */
+        margin-bottom: 5px;
+      }
+      .history-order-details p {
+        margin-bottom: 5px;
+      }
+      .history-order-details.expanded {
+        display: block;
+      }
+      .history-order-item .summary {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .history-order-item .summary span {
+        font-size: 0.9rem;
+      }
+
+      /* Export Section Styles */
+      #export-section {
+        border-top: 1px solid var(--border);
+        padding-top: 15px;
+        margin-top: auto; /* Push to the bottom */
+        text-align: center;
+      }
+      #export-section h4 {
+        color: var(--primary);
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+      }
+      #export-section .btn {
+        width: 100%;
+        margin-bottom: 10px;
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 768px) {
+        :root {
+          --sidebar-width: 220px; /* Adjust for smaller screens */
+        }
+        .card {
+          margin-bottom: 15px;
+        }
+
+        .btn-status {
+          padding: 4px 8px;
+          font-size: 0.8rem;
+        }
+        /* Adjust navbar and main content for mobile if needed */
+        /*#sidebar {
+           Optional: Adjust sidebar behavior on mobile, e.g., overlay */
+      }
+      /* #main-content {
+          Optional: Adjust main content padding/margin on mobile
+      }
+      .navbar {
+           Optional: Adjust navbar positioning on mobile
+      }
+    } */
+
+      /* Animação para novos pedidos */
+      @keyframes highlight {
+        0% {
+          box-shadow: 0 0 0 0 rgba(211, 173, 127, 0.7);
+        }
+        70% {
+          box-shadow: 0 0 0 10px rgba(211, 173, 127, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(211, 173, 127, 0);
+        }
+      }
+
+      .highlight {
+        animation: highlight 1.5s ease-in-out infinite;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Sidebar -->
+    <div id="sidebar">
+      <h3>Histórico</h3>
+      <div id="history-section">
+        <div id="history-container">
+          <!-- Histórico será carregado aqui -->
+          <p>Carregando histórico...</p>
+        </div>
+      </div>
+      <!-- Export Section -->
+      <div id="export-section">
+        <h4>Exportar Histórico</h4>
+        <button class="btn btn-secondary btn-sm" data-periodo="dia">
+          Hoje
+        </button>
+        <button class="btn btn-secondary btn-sm" data-periodo="semana">
+          Semana Atual
+        </button>
+        <button class="btn btn-secondary btn-sm" data-periodo="mes">
+          Mês Atual
+        </button>
+        <button class="btn btn-secondary btn-sm" data-periodo="completo">
+           Completo
+        </button>
+      </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div id="main-content">
+      <nav class="navbar navbar-expand-lg navbar-dark mb-4">
+        <div class="container-fluid">
+          <!-- Toggle Button -->
+          <button id="sidebar-toggle">
+            <i class="fas fa-bars"></i>
+          </button>
+          <a class="navbar-brand" href="#">Painel de Atendimento</a>
+          <div class="d-flex align-items-center ms-auto">
+            <!-- ms-auto pushes icons to the right -->
+            <div class="notification-icon">
+              <i class="fas fa-bell fa-lg"></i>
+              <span class="notification-badge" id="notification-count">0</span>
+            </div>
+            <div class="sound-toggle" id="sound-toggle">
+              <i class="fas fa-volume-up fa-lg"></i>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Add margin-top to push content below fixed navbar -->
+      <div class="container" style="margin-top: 70px">
+        <div class="row mb-4">
+          <div class="col-md-12">
+            <div class="d-flex justify-content-between align-items-right">
+              <h4 class="titulo-pedidos"></h4>
+
+              <div class="" role="group" aria-label="Ações do Painel">
+                <button
+                  class="btn btn-primary btn-sm"
+                  id="btn-minimize-all"
+                  title="Minimizar/Maximizar Todos"
+                >
+                  <!-- <i class="fas fa-window-minimize"></i> -->
+                  Todos
+                </button>
+
+                <button
+                  class="btn btn-primary btn-sm"
+                  id="btn-refresh"
+                  title="Atualizar Painel"
+                >
+                  <!-- <i class="fas fa-sync-alt"></i>-->
+                  Atualizar
+                </button>
+
+                <button
+                  class="btn btn-danger btn-sm"
+                  id="btn-clear-panel"
+                  title="Limpar Pedidos Prontos"
+                >
+                  <!-- <i class="fas fa-broom"></i> -->
+                  Limpar Prontos
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="alert alert-info" id="no-orders" style="display: none">
+              Não há pedidos no momento.
+            </div>
+            <div id="pedidos-container">
+              <!-- Os pedidos serão inseridos aqui dinamicamente -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sons de notificação -->
+    <audio id="new-order-sound" preload="auto">
+      <source src="/audio/notification-4.mp3" type="audio/mpeg" />
+    </audio>
+
+    <!-- Scripts -->
+    <script src="https://cdn.socket.io/4.5.0/socket.io.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // --- Sidebar Toggle Logic ---
+        const sidebar = document.getElementById("sidebar");
+        const mainContent = document.getElementById("main-content");
+        const navbar = document.querySelector(".navbar");
+        const sidebarToggle = document.getElementById("sidebar-toggle");
+
+        sidebarToggle.addEventListener("click", () => {
+          sidebar.classList.toggle("collapsed");
+          mainContent.classList.toggle("collapsed");
+          navbar.classList.toggle("collapsed");
+        });
+        // --- End Sidebar Toggle Logic ---
+
+        // Configurações
+        const config = {
+          soundEnabled: true,
+          notificationCount: 0,
+          pedidos: [], // Pedidos atuais (não entregues)
+          historicoPedidos: [], // Histórico de pedidos (todos)
+          statusLabels: {
+            pendente: "Pendente",
+            preparando: "Preparando",
+            pronto: "Pronto",
+            entregue: "Entregue",
+          },
+          statusClasses: {
+            pendente: "badge-pendente",
+            preparando: "badge-preparando",
+            pronto: "badge-pronto",
+            entregue: "badge-entregue",
+          },
+        };
+
+        // Elementos DOM
+        const pedidosContainer = document.getElementById("pedidos-container");
+        const historyContainer = document.getElementById("history-container");
+        const noOrdersAlert = document.getElementById("no-orders");
+        const notificationCount = document.getElementById("notification-count");
+        const soundToggle = document.getElementById("sound-toggle");
+        const newOrderSound = document.getElementById("new-order-sound");
+        const btnRefresh = document.getElementById("btn-refresh");
+        const exportSection = document.getElementById("export-section");
+        const btnMinimizeAll = document.getElementById("btn-minimize-all");
+        const btnClearPanel = document.getElementById("btn-clear-panel"); // Botão Limpar Painel
+
+        // Conectar ao servidor Socket.IO
+        const socket = io();
+
+        // Eventos Socket.IO
+        socket.on("connect", () => {
+          console.log("Conectado ao servidor");
+          carregarPedidosAtuais();
+          carregarHistoricoPedidos();
+        });
+
+        socket.on("pedidos_iniciais", (pedidos) => {
+          config.pedidos = pedidos; // Recebe apenas não entregues
+          renderizarPedidosAtuais();
+        });
+
+        socket.on("novo_pedido", (pedido) => {
+          // Adiciona ao histórico geral primeiro
+          config.historicoPedidos.unshift(pedido);
+          renderizarHistorico(); // Atualiza histórico na sidebar
+
+          // Adiciona ao painel principal se não estiver entregue
+          if (pedido.status !== "entregue") {
+            config.pedidos.unshift(pedido);
+            renderizarPedidosAtuais(); // Atualiza painel principal
+          }
+
+          // Notificação visual e sonora
+          config.notificationCount++;
+          notificationCount.textContent = config.notificationCount;
+          if (config.soundEnabled) {
+            newOrderSound.play();
+          }
+        });
+
+        socket.on("status_atualizado", (data) => {
+          // Atualiza no histórico geral
+          const historicoIndex = config.historicoPedidos.findIndex(
+            (p) => p.id === data.id
+          );
+          if (historicoIndex !== -1) {
+            config.historicoPedidos[historicoIndex].status = data.status;
+          }
+
+          // Atualiza ou remove do painel principal
+          const pedidoIndex = config.pedidos.findIndex((p) => p.id === data.id);
+          if (pedidoIndex !== -1) {
+            if (data.status === "entregue") {
+              // Remove do painel principal
+              config.pedidos.splice(pedidoIndex, 1);
+            } else {
+              // Atualiza status no painel principal
+              config.pedidos[pedidoIndex].status = data.status;
+            }
+          }
+
+          renderizarPedidosAtuais(); // Atualiza painel principal
+          renderizarHistorico(); // Atualiza histórico na sidebar
+        });
+
+        // --- Funções para Histórico ---
+        function carregarHistoricoPedidos() {
+          fetch("/api/pedidos") // Busca todos os pedidos
+            .then((response) => response.json())
+            .then((todosPedidos) => {
+              config.historicoPedidos = todosPedidos;
+              renderizarHistorico();
+            })
+            .catch((error) => {
+              console.error("Erro ao carregar histórico de pedidos:", error);
+              historyContainer.innerHTML = "<p>Erro ao carregar histórico.</p>";
+            });
+        }
+
+        function renderizarHistorico() {
+          // Filtra apenas os entregues para exibição no histórico da sidebar
+          const historicoEntregue = config.historicoPedidos.filter(
+            (p) => p.status === "entregue"
+          );
+
+          if (!historicoEntregue || historicoEntregue.length === 0) {
+            historyContainer.innerHTML =
+              "<p>Nenhum pedido entregue no histórico.</p>";
+            return;
+          }
+
+          // Agrupar por dia da semana
+          const diasSemana = [
+            "Domingo",
+            "Segunda",
+            "Terça",
+            "Quarta",
+            "Quinta",
+            "Sexta",
+            "Sábado",
+          ];
+          const groupedByDay = historicoEntregue.reduce((acc, pedido) => {
+            const date = new Date(pedido.data);
+            const dayName = diasSemana[date.getDay()];
+            if (!acc[dayName]) {
+              acc[dayName] = [];
+            }
+            acc[dayName].push(pedido);
+            acc[dayName].sort((a, b) => new Date(b.data) - new Date(a.data));
+            return acc;
+          }, {});
+
+          // Ordenar os dias da semana
+          const diasOrdenados = Object.keys(groupedByDay).sort((a, b) => {
+            return diasSemana.indexOf(a) - diasSemana.indexOf(b);
+          });
+
+          historyContainer.innerHTML = diasOrdenados
+            .map(
+              (day) => `
+          <div class="history-day-group">
+            <h4>${day} (${
+                groupedByDay[day].length
+              }) <i class="fas fa-chevron-down fa-xs"></i></h4>
+            <div class="history-orders-list" style="display: none;">
+              ${groupedByDay[day]
+                .map(
+                  (pedido) => `
+                <div class="history-order-item" data-order-id="${pedido.id}">
+                  <div class="summary">
+                     <span>#${pedido.id.substring(0, 6)} (Mesa ${
+                    pedido.mesa
+                  })</span>
+                     <span>${new Date(pedido.data).toLocaleTimeString([], {
+                       hour: "2-digit",
+                       minute: "2-digit",
+                     })}</span>
+                  </div>
+                  <div class="history-order-details">
+                    <p><strong>Mesa:</strong> ${pedido.mesa}</p>
+                    <p><strong>Data:</strong> ${new Date(
+                      pedido.data
+                    ).toLocaleString("pt-BR")}</p>
+                    <p><strong>Itens:</strong></p>
+                    <ul>
+                      ${pedido.itens
+                        .map(
+                          (item) =>
+                            `<li>${item.quantidade}x ${item.nome} ${
+                              item.descricao ? "(" + item.descricao + ")" : ""
+                            } - R$ ${(item.preco * item.quantidade).toFixed(
+                              2
+                            )}</li>`
+                        )
+                        .join("")}
+                    </ul>
+                    ${
+                      pedido.observacoes
+                        ? `<p><strong>Obs:</strong> ${pedido.observacoes}</p>`
+                        : ""
+                    }
+                    <p><strong>Total:</strong> R$ ${pedido.total.toFixed(2)}</p>
+                    <p><strong>Status:</strong> <span class="badge ${
+                      config.statusClasses[pedido.status]
+                    }">${config.statusLabels[pedido.status]}</span></p>
+                  </div>
+                </div>
+              `
+                )
+                .join("")}
+            </div>
+          </div>
+        `
+            )
+            .join("");
+
+          // Adicionar eventos de clique para expandir/minimizar detalhes do pedido
+          historyContainer
+            .querySelectorAll(".history-order-item .summary")
+            .forEach((summary) => {
+              summary.removeEventListener("click", handleHistoryItemClick); // Evita duplicados
+              summary.addEventListener("click", handleHistoryItemClick);
+            });
+
+          // Adicionar evento de clique para expandir/minimizar grupo do dia
+          historyContainer
+            .querySelectorAll(".history-day-group h4")
+            .forEach((header) => {
+              header.removeEventListener("click", handleHistoryDayToggle); // Evita duplicados
+              header.addEventListener("click", handleHistoryDayToggle);
+            });
+        }
+
+        function handleHistoryItemClick() {
+          const details = this.nextElementSibling;
+          if (details) {
+            details.classList.toggle("expanded");
+          }
+        }
+
+        function handleHistoryDayToggle() {
+          const list = this.nextElementSibling;
+          const icon = this.querySelector("i");
+          if (list.style.display === "none") {
+            list.style.display = "block";
+            icon.classList.replace("fa-chevron-down", "fa-chevron-up");
+          } else {
+            list.style.display = "none";
+            icon.classList.replace("fa-chevron-up", "fa-chevron-down");
+          }
+        }
+        // --- Fim Funções para Histórico ---
+
+        // --- Funções para Exportação ---
+        function exportarHistorico(periodo) {
+          console.log(`Tentando exportar período: ${periodo}`);
+          const url = `/api/historico/exportar?periodo=${periodo}`;
+
+          fetch(url)
+            .then((response) => {
+              if (!response.ok) {
+                // Tenta ler a mensagem de erro do corpo da resposta
+                return response.json().then((err) => {
+                  throw new Error(
+                    err.message || `Erro HTTP: ${response.status}`
+                  );
+                });
+              }
+              const disposition = response.headers.get("Content-Disposition");
+              let filename = `historico_pedidos_${periodo}.csv`;
+              if (disposition && disposition.indexOf("attachment") !== -1) {
+                const filenameRegex = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
+                const matches = filenameRegex.exec(disposition);
+                if (matches != null && matches[1]) {
+                  filename = matches[1].replace(/['"]/g, "");
+                }
+              }
+              return response.blob().then((blob) => ({ blob, filename }));
+            })
+            .then(({ blob, filename }) => {
+              const link = document.createElement("a");
+              link.href = window.URL.createObjectURL(blob);
+              link.download = filename;
+              document.body.appendChild(link);
+              link.click();
+              document.body.removeChild(link);
+              window.URL.revokeObjectURL(link.href);
+              console.log(`Exportação de ${filename} iniciada.`);
+            })
+            .catch((error) => {
+              console.error("Erro ao exportar histórico:", error);
+              alert(`Falha ao exportar o histórico: ${error.message}`);
+            });
+        }
+
+        exportSection.querySelectorAll("button").forEach((button) => {
+          button.addEventListener("click", function () {
+            const periodo = this.getAttribute("data-periodo");
+            exportarHistorico(periodo);
+          });
+        });
+        // --- Fim Funções para Exportação ---
+
+        // --- Funções (Painel Principal) ---
+        function carregarPedidosAtuais() {
+          fetch("/api/pedidos")
+            .then((response) => response.json())
+            .then((todosPedidos) => {
+              // Filtra apenas não entregues para o painel principal
+              config.pedidos = todosPedidos.filter(
+                (p) => p.status !== "entregue"
+              );
+              renderizarPedidosAtuais();
+            })
+            .catch((error) => {
+              console.error("Erro ao carregar pedidos atuais:", error);
+            });
+        }
+
+        function renderizarPedidosAtuais() {
+          if (config.pedidos.length === 0) {
+            pedidosContainer.innerHTML = "";
+            noOrdersAlert.style.display = "block";
+            return;
+          }
+
+          noOrdersAlert.style.display = "none";
+
+          const pedidosOrdenados = [...config.pedidos].sort((a, b) => {
+            const ordem = { pendente: 0, preparando: 1, pronto: 2 };
+            return ordem[a.status] - ordem[b.status];
+          });
+
+          pedidosContainer.innerHTML = pedidosOrdenados
+            .map((pedido) => {
+              const isNew = pedido.status === "pendente";
+              const highlightClass = isNew ? "highlight" : "";
+              const isMinimized = document
+                .getElementById(`pedido-${pedido.id}`)
+                ?.classList.contains("minimized"); // Preserve minimize state
+              const minimizedClass = isMinimized ? "minimized" : "";
+              const minimizeIcon = isMinimized
+                ? "fa-window-maximize"
+                : "fa-window-minimize";
+              const minimizeTitle = isMinimized
+                ? "Maximizar Pedido"
+                : "Minimizar Pedido";
+
+              return `
+            <div class="card mb-4 ${highlightClass} ${minimizedClass}" id="pedido-${
+                pedido.id
+              }">
+              <div class="card-header">
+                <div class="header-info">
+
+                  <span class="badge marrom ms-2">Mesa ${pedido.mesa}</span>
+
+                   <span class="badge ${config.statusClasses[pedido.status]}">${
+                config.statusLabels[pedido.status]
+              }</span>
+              
+                </div>
+
+                <button class="btn-minimize" title="${minimizeTitle}">
+                  <i class="fas ${minimizeIcon}"></i>
+                </button>
+              </div>
+              <div class="card-body">
+                <div class="mb-3">
+                  ${pedido.itens
+                    .map(
+                      (item) => `
+                    <div class="item-pedido">
+                      <div class="d-flex justify-content-between">
+                        <div>
+                          <strong>${item.nome}</strong> x ${item.quantidade}
+                          ${
+                            item.descricao
+                              ? `<div class="text-muted small">${item.descricao}</div>`
+                              : ""
+                          }
+                        </div>
+                        <div>R$ ${(item.preco * item.quantidade).toFixed(
+                          2
+                        )}</div>
+                      </div>
+                    </div>
+                  `
+                    )
+                    .join("")}
+                </div>
+                
+                ${
+                  pedido.observacoes
+                    ? `
+                  <div class="mb-3">
+                    <strong>Observações:</strong>
+                    <p class="mb-0">${pedido.observacoes}</p>
+                  </div>
+                `
+                    : ""
+                }
+                
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <strong>Total:</strong> R$ ${pedido.total.toFixed(2)}
+                  </div>
+                  <div>
+                    <strong>Data:</strong> ${new Date(
+                      pedido.data
+                    ).toLocaleString("pt-BR")}
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer">
+              <div class="d-flex flex-wrap">
+                <select class="form-select form-select-sm status-select custom-select" data-id="${
+                  pedido.id
+                }">
+                  <option value="pendente" ${
+                    pedido.status === "pendente" ? "selected" : ""
+                  }>Pendente</option>
+                  <option value="preparando" ${
+                    pedido.status === "preparando" ? "selected" : ""
+                  }>Preparando</option>
+                  <option value="pronto" ${
+                    pedido.status === "pronto" ? "selected" : ""
+                  }>Pronto</option>
+                  <option value="entregue" ${
+                    pedido.status === "entregue" ? "selected" : ""
+                  }>Entregue</option>
+                </select>
+              </div>
+            </div>
+
+            </div>
+          `;
+            })
+            .join("");
+          // Adicionar eventos ao select de status
+          document.querySelectorAll(".status-select").forEach((select) => {
+            select.addEventListener("change", function () {
+              const id = this.getAttribute("data-id");
+              const status = this.value;
+              atualizarStatus(id, status);
+            });
+          });
+
+          // <button class="btn btn-success btn-sm btn-status" data-id="${pedido.id}" data-status="pronto" ${pedido.status === 'pronto' ? 'disabled' : ''}>
+          //             Pronto
+          //           </button>
+
+          // Adicionar listeners aos botões de status
+          document
+            .querySelectorAll("#pedidos-container .btn-status")
+            .forEach((btn) => {
+              btn.removeEventListener("click", handleStatusUpdate);
+              btn.addEventListener("click", handleStatusUpdate);
+            });
+
+          // Adicionar listeners aos botões de minimizar
+          document
+            .querySelectorAll("#pedidos-container .btn-minimize")
+            .forEach((btn) => {
+              btn.removeEventListener("click", handleMinimizeToggle);
+              btn.addEventListener("click", handleMinimizeToggle);
+            });
+        }
+
+        function handleStatusUpdate() {
+          const id = this.getAttribute("data-id");
+          const status = this.getAttribute("data-status");
+          atualizarStatus(id, status);
+        }
+
+        function atualizarStatus(id, status) {
+          console.log(`Atualizando status pedido ${id} para ${status}`);
+          socket.emit("atualizar_status", { id, status });
+        }
+
+        // --- Função para Minimizar/Maximizar Card ---
+        function handleMinimizeToggle() {
+          const card = this.closest(".card");
+          if (card) {
+            card.classList.toggle("minimized");
+            const icon = this.querySelector("i");
+            if (card.classList.contains("minimized")) {
+              icon.classList.replace(
+                "fa-window-minimize",
+                "fa-window-maximize"
+              );
+              this.title = "Maximizar Pedido";
+            } else {
+              icon.classList.replace(
+                "fa-window-maximize",
+                "fa-window-minimize"
+              );
+              this.title = "Minimizar Pedido";
+            }
+          }
+        }
+
+        // --- Função para Minimizar/Maximizar Todos os Cards ---
+        let allMinimized = false;
+        btnMinimizeAll.addEventListener("click", () => {
+          allMinimized = !allMinimized;
+          const cards = pedidosContainer.querySelectorAll(".card");
+          cards.forEach((card) => {
+            const btn = card.querySelector(".btn-minimize");
+            const icon = btn.querySelector("i");
+            if (allMinimized) {
+              card.classList.add("minimized");
+              icon.classList.replace(
+                "fa-window-minimize",
+                "fa-window-maximize"
+              );
+              btn.title = "Maximizar Pedido";
+            } else {
+              card.classList.remove("minimized");
+              icon.classList.replace(
+                "fa-window-maximize",
+                "fa-window-minimize"
+              );
+              btn.title = "Minimizar Pedido";
+            }
+          });
+          const mainIcon = btnMinimizeAll.querySelector("i");
+          if (allMinimized) {
+            mainIcon.classList.replace(
+              "fa-window-minimize",
+              "fa-window-maximize"
+            );
+            btnMinimizeAll.title = "Maximizar Todos";
+          } else {
+            mainIcon.classList.replace(
+              "fa-window-maximize",
+              "fa-window-minimize"
+            );
+            btnMinimizeAll.title = "Minimizar Todos";
+          }
+        });
+
+        // --- Função para Limpar Painel (Pedidos Prontos) ---
+        btnClearPanel.addEventListener("click", () => {
+          const pedidosProntos = config.pedidos.filter(
+            (p) => p.status === "pronto"
+          );
+
+          if (pedidosProntos.length === 0) {
+            alert('Não há pedidos com status "Pronto" para limpar.');
+            return;
+          }
+
+          const confirmClear = confirm(
+            `Tem certeza que deseja limpar ${pedidosProntos.length} pedido(s) com status "Pronto"? Eles serão movidos para o histórico como "Entregue".`
+          );
+
+          if (confirmClear) {
+            console.log(`Limpando ${pedidosProntos.length} pedidos prontos...`);
+            pedidosProntos.forEach((pedido) => {
+              atualizarStatus(pedido.id, "entregue");
+            });
+            // A atualização via socket.on('status_atualizado') cuidará de remover do painel e atualizar o histórico.
+            alert(
+              `${pedidosProntos.length} pedido(s) movido(s) para o histórico.`
+            );
+          }
+        });
+
+        // Event Listeners (Outros)
+        soundToggle.addEventListener("click", function () {
+          config.soundEnabled = !config.soundEnabled;
+          const icon = this.querySelector("i");
+          icon.className = config.soundEnabled
+            ? "fas fa-volume-up fa-lg"
+            : "fas fa-volume-mute fa-lg";
+        });
+
+        btnRefresh.addEventListener("click", () => {
+          carregarPedidosAtuais();
+          carregarHistoricoPedidos();
+        });
+
+        document
+          .querySelector(".notification-icon")
+          .addEventListener("click", function () {
+            config.notificationCount = 0;
+            notificationCount.textContent = "0";
+          });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,322 @@
+[
+  {
+    "id": "mbn3qpbua6t15",
+    "mesa": 2,
+    "itens": [
+      {
+        "id": "004",
+        "nome": "004    Café com Leite e\n                Canela (xícara 50 ml)",
+        "descricao": "Café Orgânico Camocim. Espresso dosado com Leite e polvilhado com\n                Canela em pó.",
+        "preco": 10,
+        "quantidade": 1
+      }
+    ],
+    "observacoes": "",
+    "status": "pendente",
+    "data": "2025-06-08T03:27:02.587Z",
+    "total": 10
+  },
+  {
+    "id": "mbn2f85glepvg",
+    "mesa": 2,
+    "itens": [
+      {
+        "id": "001",
+        "nome": "001    Café Espresso",
+        "descricao": "Café Orgânico Camocim. Grãos de Café Arábica, Orgânico, moídos e\n                elaborado na Máquina Espresso.",
+        "preco": 9,
+        "quantidade": 1
+      },
+      {
+        "id": "004",
+        "nome": "004    Café com Leite e\n                Canela (xícara 50 ml)",
+        "descricao": "Café Orgânico Camocim. Espresso dosado com Leite e polvilhado com\n                Canela em pó.",
+        "preco": 10,
+        "quantidade": 1
+      }
+    ],
+    "observacoes": "",
+    "status": "pronto",
+    "data": "2025-06-08T02:50:07.492Z",
+    "total": 19
+  },
+  {
+    "id": "mbn1dbm41rn5e",
+    "mesa": 2,
+    "itens": [
+      {
+        "id": "001",
+        "nome": "001    Café Espresso",
+        "descricao": "Café Orgânico Camocim. Grãos de Café Arábica, Orgânico, moídos e\n                elaborado na Máquina Espresso.",
+        "preco": 9,
+        "quantidade": 1
+      }
+    ],
+    "observacoes": "",
+    "status": "pronto",
+    "data": "2025-06-08T02:20:39.054Z",
+    "total": 9
+  },
+  {
+    "id": "mbn1d2w3zgt16",
+    "mesa": 2,
+    "itens": [
+      {
+        "id": "004",
+        "nome": "004    Café com Leite e\n                Canela (xícara 50 ml)",
+        "descricao": "Café Orgânico Camocim. Espresso dosado com Leite e polvilhado com\n                Canela em pó.",
+        "preco": 10,
+        "quantidade": 1
+      }
+    ],
+    "observacoes": "",
+    "status": "entregue",
+    "data": "2025-06-08T02:20:27.747Z",
+    "total": 10
+  },
+  {
+    "id": "mbmydf694rn2c",
+    "mesa": 2,
+    "itens": [
+      {
+        "id": "001",
+        "nome": "001    Café Espresso",
+        "descricao": "Café Orgânico Camocim. Grãos de Café Arábica, Orgânico, moídos e\n                elaborado na Máquina Espresso.",
+        "preco": 9,
+        "quantidade": 1
+      }
+    ],
+    "observacoes": "",
+    "status": "pendente",
+    "data": "2025-06-08T00:56:44.819Z",
+    "total": 9
+  },
+  {
+    "id": "mbmvmemyvwn7z",
+    "mesa": 2,
+    "itens": [
+      {
+        "id": "001",
+        "nome": "001    Café Espresso",
+        "descricao": "Café Orgânico Camocim. Grãos de Café Arábica, Orgânico, moídos e\n                elaborado na Máquina Espresso.",
+        "preco": 9,
+        "quantidade": 1
+      }
+    ],
+    "observacoes": "",
+    "status": "entregue",
+    "data": "2025-06-07T23:39:45.178Z",
+    "total": 9
+  },
+  {
+    "id": "mbmvkr1uyio71",
+    "mesa": 2,
+    "itens": [
+      {
+        "id": "001",
+        "nome": "001    Café Espresso",
+        "descricao": "Café Orgânico Camocim. Grãos de Café Arábica, Orgânico, moídos e\n                elaborado na Máquina Espresso.",
+        "preco": 9,
+        "quantidade": 1
+      }
+    ],
+    "observacoes": "",
+    "status": "entregue",
+    "data": "2025-06-07T23:38:27.955Z",
+    "total": 9
+  },
+  {
+    "id": "mbmvghq8xxk4q",
+    "mesa": 2,
+    "itens": [
+      {
+        "id": "001",
+        "nome": "001    Café Espresso",
+        "descricao": "Café Orgânico Camocim. Grãos de Café Arábica, Orgânico, moídos e\n                elaborado na Máquina Espresso.",
+        "preco": 9,
+        "quantidade": 1
+      }
+    ],
+    "observacoes": "",
+    "status": "entregue",
+    "data": "2025-06-07T23:35:09.248Z",
+    "total": 9
+  },
+  {
+    "id": "mbmvbnrzx07cm",
+    "mesa": 2,
+    "itens": [
+      {
+        "id": "001",
+        "nome": "001    Café Espresso",
+        "descricao": "Café Orgânico Camocim. Grãos de Café Arábica, Orgânico, moídos e\n                elaborado na Máquina Espresso.",
+        "preco": 9,
+        "quantidade": 1
+      }
+    ],
+    "observacoes": "",
+    "status": "entregue",
+    "data": "2025-06-07T23:31:23.807Z",
+    "total": 9
+  },
+  {
+    "id": "mbmt7uljuo3hj",
+    "mesa": 2,
+    "itens": [
+      {
+        "id": "001",
+        "nome": "001    Café Espresso",
+        "descricao": "Café Orgânico Camocim. Grãos de Café Arábica, Orgânico, moídos e\n                elaborado na Máquina Espresso.",
+        "preco": 9,
+        "quantidade": 1
+      }
+    ],
+    "observacoes": "",
+    "status": "entregue",
+    "data": "2025-06-07T22:32:26.793Z",
+    "total": 9
+  },
+  {
+    "id": "mbmst37orj4j9",
+    "mesa": 2,
+    "itens": [
+      {
+        "id": "004",
+        "nome": "004    Café com Leite e\n                Canela (xícara 50 ml)",
+        "descricao": "Café Orgânico Camocim. Espresso dosado com Leite e polvilhado com\n                Canela em pó.",
+        "preco": 10,
+        "quantidade": 1
+      }
+    ],
+    "observacoes": "",
+    "status": "entregue",
+    "data": "2025-06-07T22:20:58.116Z",
+    "total": 10
+  },
+  {
+    "id": "mbmssv7vcqqrz",
+    "mesa": 2,
+    "itens": [
+      {
+        "id": "004",
+        "nome": "004    Café com Leite e\n                Canela (xícara 50 ml)",
+        "descricao": "Café Orgânico Camocim. Espresso dosado com Leite e polvilhado com\n                Canela em pó.",
+        "preco": 10,
+        "quantidade": 1
+      }
+    ],
+    "observacoes": "",
+    "status": "entregue",
+    "data": "2025-06-07T22:20:47.755Z",
+    "total": 10
+  },
+  {
+    "id": "mblexcblb5dk7",
+    "mesa": 73,
+    "itens": [
+      {
+        "id": "001",
+        "nome": "001    Café Espresso",
+        "descricao": "Café Orgânico Camocim. Grãos de Café Arábica, Orgânico, moídos e\n                elaborado na Máquina Espresso.",
+        "preco": 9,
+        "quantidade": 1
+      }
+    ],
+    "observacoes": "",
+    "status": "entregue",
+    "data": "2025-06-06T23:04:35.745Z",
+    "total": 9
+  },
+  {
+    "id": "mblelqj7jbckw",
+    "mesa": 73,
+    "itens": [
+      {
+        "id": "004",
+        "nome": "004    Café com Leite e\n                Canela (xícara 50 ml)",
+        "descricao": "Café Orgânico Camocim. Espresso dosado com Leite e polvilhado com\n                Canela em pó.",
+        "preco": 10,
+        "quantidade": 1
+      }
+    ],
+    "observacoes": "",
+    "status": "entregue",
+    "data": "2025-06-06T22:55:34.291Z",
+    "total": 10
+  },
+  {
+    "id": "mblelg5r93h8f",
+    "mesa": 73,
+    "itens": [
+      {
+        "id": "001",
+        "nome": "001    Café Espresso",
+        "descricao": "Café Orgânico Camocim. Grãos de Café Arábica, Orgânico, moídos e\n                elaborado na Máquina Espresso.",
+        "preco": 9,
+        "quantidade": 1
+      }
+    ],
+    "observacoes": "",
+    "status": "entregue",
+    "data": "2025-06-06T22:55:20.847Z",
+    "total": 9
+  },
+  {
+    "id": "mbldhwr6ql6xh",
+    "mesa": 73,
+    "itens": [
+      {
+        "id": "001",
+        "nome": "001    Café Espresso",
+        "descricao": "Café Orgânico Camocim. Grãos de Café Arábica, Orgânico, moídos e\n                elaborado na Máquina Espresso.",
+        "preco": 9,
+        "quantidade": 1
+      }
+    ],
+    "observacoes": "",
+    "status": "entregue",
+    "data": "2025-06-06T22:24:36.115Z",
+    "total": 9
+  },
+  {
+    "id": "616007",
+    "mesa": "7",
+    "itens": [
+      {
+        "id": "001",
+        "nome": "001    Café Espresso",
+        "descricao": "Café Orgânico Camocim. Grãos de Café Arábica, Orgânico, moídos e\n                elaborado na Máquina Espresso.",
+        "preco": 9,
+        "quantidade": 1
+      },
+      {
+        "id": "004",
+        "nome": "004    Café com Leite e\n                Canela (xícara 50 ml)",
+        "descricao": "Café Orgânico Camocim. Espresso dosado com Leite e polvilhado com\n                Canela em pó.",
+        "preco": 10,
+        "quantidade": 1
+      }
+    ],
+    "observacoes": "",
+    "status": "entregue",
+    "data": "2025-05-21T03:23:49.434Z",
+    "total": 19
+  },
+  {
+    "id": "925808",
+    "mesa": "5",
+    "itens": [
+      {
+        "id": "001",
+        "nome": "001    Café Espresso",
+        "descricao": "Café Orgânico Camocim. Grãos de Café Arábica, Orgânico, moídos e\n                elaborado na Máquina Espresso.",
+        "preco": 9,
+        "quantidade": 1
+      }
+    ],
+    "observacoes": "",
+    "status": "entregue",
+    "data": "2025-05-21T03:42:25.930Z",
+    "total": 9
+  }
+]
