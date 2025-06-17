@@ -101,6 +101,12 @@
         transition: left 0.3s ease, width 0.3s ease;
       }
 
+      .navbar a {
+        text-align: center;
+        position: relative;
+        left: 37%;
+      }
+
       .marrom {
         background-color: var(--marrom) !important;
         position: relative;
@@ -116,7 +122,7 @@
         color: var(--primary);
         font-weight: bold;
         font-size: 1.5rem;
-        text-align: center;
+
       }
 
       #sidebar-toggle {
@@ -287,6 +293,7 @@
         flex-grow: 1; /* Allow history to take available space */
         overflow-y: auto; /* Scroll only history section */
         margin-bottom: 15px; /* Space before export section */
+        text-align: center;
       }
       .history-day-group h4 {
         color: #ccc;
@@ -430,7 +437,7 @@
           <button id="sidebar-toggle">
             <i class="fas fa-bars"></i>
           </button>
-          <a class="navbar-brand" href="#">Painel de Atendimento</a>
+          <a class="navbar-brand href="#">Painel de Atendimento</a>
           <div class="d-flex align-items-center ms-auto">
             <!-- ms-auto pushes icons to the right -->
             <div class="notification-icon">
