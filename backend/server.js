@@ -109,8 +109,12 @@ app.get("/cardapio.html", (req, res) => {
 });
 
 // Rota para o painel do atendente
-app.get("/atendente", (req, res) => {
-  res.sendFile(path.join(__dirname, "templates", "atendente.html"));
+// app.get("/atendente", (req, res) => {
+//   res.sendFile(path.join(__dirname, "templates", "atendente.html"));
+// });
+
+app.get("/atendente.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "atendente.html"));
 });
 
 // API para pedidos
@@ -319,8 +323,11 @@ io.on("connection", (socket) => {
   });
 });
 
+
 // Iniciar servidor
 server.listen(PORT, "0.0.0.0", () => {
   console.log(`Servidor rodando na porta ${PORT}`);
+  console.log(`Acesse:`);
+  console.log(`- Página principal: http://localhost:${PORT}`);
+  console.log(`- Painel do atendente: http://localhost:${PORT}/atendente.html`);
 });
-

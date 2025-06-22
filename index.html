@@ -35,8 +35,9 @@
   </head>
   <body>
     <header class="header">
+      
       <!--cabeçalho-->
-      <section>
+      <section class="sec-navbar">
         <nav class="navbar">
           <!--navbar desktop-->
           <a href="#home">Início</a>
@@ -69,7 +70,7 @@
         </div>
 
         <div class="social-icons">
-          <a href="https://www.instagram.com/casacafe_/" target="_blank"
+          <a href="https://www.instagram.com/casacafe_/"
             ><i class="bx bxl-instagram"></i
           ></a>
           <a href="https://www.facebook.com/"
@@ -83,51 +84,51 @@
       <h2 class="tittle">NOSSO<span> CARDÁPIO</span></h2>
 
       <div class="box-container">
-        <div class="box">
+        <div class="box-menu">
           <img src="img/menu-1.png" alt="item-1" />
           <h3>Cafés e Chocolates</h3>
           <a href="cardapio.html" class="btn-menu">PEÇA O SEU</a>
           <!-- <div class="price">R$ 15,99 <span>R$20,99</span></div> -->
         </div>
 
-        <div class="box">
+        <div class="box-menu">
           <img src="img/chá.png" alt="item-1" />
           <h3>Chá Gourmet</h3>
           <a href="cardapio.html#cha-gourmet" class="btn-menu">PEÇA O SEU</a>
           <!-- <div class="price">R$ 15,99 <span>R$20,99</span></div> -->
         </div>
 
-        <!-- <div class="box">
+        <div class="box">
           <a href="cardapio.html"
             ><img src="/img/chocolate.png" alt="item-1"
           /></a>
-          <h3>Chocolates</h3>
-          <a href="cardapio.htmlchocolates-quentes" class="btn-menu">PEÇA O SEU</a>
+          <h3>Vinhos</h3>
+          <a href="cardapio.html#vinhos" class="btn-menu">PEÇA O SEU</a>
 
-           <div class="price">R$ 15,99 <span>R$20,99</span></div> 
-        </div> -->
+           <!-- <div class="price">R$ 15,99 <span>R$20,99</span></div>  -->
+        </div>
 
-        <div class="box">
+        <div class="box-menu">
           <a href="cardapio.html"><img src="img/coke.png" alt="item-1" /></a>
           <h3>Refrigerantes</h3>
           <a href="cardapio.html#refrigerantes" class="btn-menu">PEÇA O SEU</a>
           <!-- <div class="price">R$ 15,99 <span>R$20,99</span></div> -->
         </div>
 
-        <div class="box">
+        <div class="box-menu">
           <a href="cardapio.html"><img src="img/suco.png" alt="item-1" /></a>
           <h3>Águas e Sucos</h3>
-          <a href="cardapio.html#aguas-sucos" class="btn-menu">PEÇA O SEU</a>
+          <a href="cardapio.html#aguas-e-sucos" class="btn-menu">PEÇA O SEU</a>
           <!-- <div class="price">R$ 15,99 <span>R$20,99</span></div> -->
         </div>
 
-        <!-- <div class="box">
+        <div class="box">
           <a href="cardapio.html"><img src="img/beer.jpg" alt="item-1" /></a>
           <h3>Cervejas</h3>
           <a href="cardapio.html#cerveja" class="btn-menu">PEÇA O SEU</a>
-        </div> -->
+        </div>
 
-        <div class="box">
+        <div class="box-menu">
           <a href="cardapio.html"><img src="img/bolo.png" alt="item-1" /></a>
           <h3>Tortas e Bolos</h3>
           <a href="cardapio.html#torta-bolo" class="btn-menu">PEÇA O SEU</a>
@@ -135,7 +136,7 @@
         </div>
 
         
-        <div class="box" id="salgados">
+        <div class="box-menu" id="salgados">
           <a href="cardapio.html"><img src="img/torta.png" alt="item-1" /></a>
           <h3>Salgados</h3>
           <a href="cardapio.html#salgados" class="btn-menu">PEÇA O SEU</a>
@@ -371,5 +372,44 @@
       integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
       crossorigin="anonymous"
     ></script>
+    <script>
+      // smooth-scroll.js - Compatível com navegação entre páginas
+    document.addEventListener('DOMContentLoaded', function() {
+        // Função para rolar suavemente para o elemento alvo
+        function smoothScrollTo(targetId) {
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+
+        // Verifica o hash na URL ao carregar a página (para links entre páginas)
+        if (window.location.hash) {
+            smoothScrollTo(window.location.hash);
+        }
+
+        // Configura os cliques em links âncora
+        document.querySelectorAll('a[href*="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                const isLinkParaOutraPagina = href.includes('.html#'); // Ex: "cardapio.html#cha-gourmet"
+                
+                if (isLinkParaOutraPagina) {
+                    // Links entre páginas: deixe o navegador navegar normalmente
+                    return true;
+                } else if (href.startsWith('#')) {
+                    // Links na mesma página: scroll suave
+                    e.preventDefault();
+                    smoothScrollTo(href);
+                    history.pushState(null, null, href);
+                }
+            });
+        });
+    });
+    </script>
+
   </body>
 </html>
