@@ -28,14 +28,18 @@ body {
 
 .header .logo img {
     border-radius: 50%;
-    width: 7rem;
-   
+    width: 4rem;
+    position: relative;
+    right: 170px;
+}
+
+.sec-navbar {
+    max-width: 1300px;
 }
 
 section {
     padding: 3rem 2rem;
     margin: 0 auto;
-    max-width: 1300px;
     padding-top: 11rem;
 }
 
@@ -56,11 +60,11 @@ section {
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
 }
-nav {
-    height: 50px;
-    height: 40px;
-    height: 42px;
-}
+/* nav {
+   
+} */
+
+
 .navbar a {
     margin: 0 2rem;
     font-size: 1.8rem;
@@ -76,7 +80,7 @@ nav {
 
 /* ESCILO MENU MOBILE */
 
-header .btn-menu-mob {
+/* header .btn-menu-mob {
     display: none;
 }
 
@@ -129,7 +133,7 @@ header .menu-mobile ul a{
     padding: 20px 0;
     margin-top: 20px;
     display: block;
-}
+} */
 
 /* REDES SOCIAIS INICIO */
 
@@ -145,8 +149,8 @@ header .menu-mobile ul a{
     margin: 3rem 0.5rem;
     transition:0.3s ease-in-out;
     position: relative;
-    right: 58rem;
-    top: 13rem;
+    right: 60.5rem;
+    top: 12rem;
 }
 
 .social-icons a:hover {
@@ -242,11 +246,13 @@ header .menu-mobile ul a{
 
 
 .home-container {
-    background: url("/img/coffe-bg3.png");
+    background: url("/img/coffe-bg.png");
     height: 100vh;
     background-position: center;
     background-size: cover;
 }
+
+
 
 .content {
     max-width: 60rem;
@@ -265,6 +271,10 @@ header .menu-mobile ul a{
     font-weight: 100;
     line-height: 1.8;
     padding: 1rem 0;
+}
+
+#home {
+    max-width: 1300px;
 }
 
 .home-container section {
@@ -287,6 +297,10 @@ header .menu-mobile ul a{
 
 .tittle span {
     color: #fff;   
+}
+
+.space {
+    max-width: 1300px;
 }
 
 .space .row {
@@ -321,12 +335,7 @@ header .menu-mobile ul a{
     border: 1px solid var(--main-color);
 }
 
-.box-container {
-    cursor: pointer;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
-    gap: 1.5rem;
-}
+
 
 .box-container a {
     color: #000;
@@ -340,9 +349,21 @@ header .menu-mobile ul a{
     
 }
 
+.menu .box-container .box-menu {
+    text-align: center;
+    border: var(--border);
+    padding: 1.7rem;
+}
+
 .menu .box-container .box img {
     height: 10rem;
 }
+
+.menu .box-container .box-menu img {
+    height: 10rem;
+
+}
+
 
 .menu .box-container .box h3 {
     color: #fff;
@@ -362,6 +383,13 @@ header .menu-mobile ul a{
     font-weight: lighter;
 }
 
+
+.menu .box-menu span {
+    font-size: 1.5rem;
+    text-decoration: line-through !important; /*Risca o nome*/
+    font-weight: lighter;
+}
+
 /*.menu .box-container .box:hover {
     background-color: #fff;
 }
@@ -371,12 +399,31 @@ header .menu-mobile ul a{
     color: var(--black);
 }*/
 
+.box-container  {
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    justify-content: center;
+    
+    
+}
+ 
+ .menu  {
+    max-width: 1300px;
+} 
+
+.review {
+    max-width: 1300px;
+}
+
 .review .box-container .box {
     border: var(--border);
     text-align: center;
     padding: 3rem 2rem;
     margin: 10px;
 }
+
 
 .review .box-container .box p {
     font-size: 1.5rem;
@@ -386,7 +433,21 @@ header .menu-mobile ul a{
     font-weight: lighter;
 }
 
+.menu .box-menu p {
+   font-size: 1.5rem;
+    color: #fff;
+    padding: 2rem 0;
+    line-height: 1.8;
+    font-weight: lighter; 
+}
+
 .review .box-container .box h3 {
+    color: #fff;
+    font-size: 2rem;
+    margin: 1rem;
+}
+
+.menu .box-menu h3 {
     color: #fff;
     font-size: 2rem;
     margin: 1rem;
@@ -398,11 +459,6 @@ header .menu-mobile ul a{
     border-radius: 50% ;
 }
 
-.review .box-container .box user {
-    height: 7rem;
-    width: 7rem;
-    border-radius: 50%;
-}
 
 .container-form {
     display: flex;
@@ -423,6 +479,10 @@ form h3{
     text-align: center;
     color: #fff;
     font-size: 2rem;
+}
+
+.address { 
+    max-width: 1300px;
 }
 
 .address .container-form .map {
@@ -467,6 +527,7 @@ form h3{
 }
 .footer{
     text-align: center;
+    
 }
 
 .footer .share {
