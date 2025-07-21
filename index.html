@@ -35,7 +35,6 @@
   </head>
   <body>
     <header class="header">
-      
       <!--cabeçalho-->
       <section class="sec-navbar">
         <nav class="navbar">
@@ -64,13 +63,13 @@
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis non
             id ducimus illo placeat? Quia neque similique exercitationem
-            quisquam voluptate. 
+            quisquam voluptate.
           </p>
           <a href="#menu" target="" class="btn">CARDÁPIO</a>
         </div>
 
         <div class="social-icons">
-          <a href="https://www.instagram.com/casacafe_/"
+          <a href="https://www.instagram.com"
             ><i class="bx bxl-instagram"></i
           ></a>
           <a href="https://www.facebook.com/"
@@ -105,7 +104,7 @@
           <h3>Chocolates</h3>
           <a href="cardapio.html" class="btn-menu">PEÇA O SEU</a>
 
-           <!-- <div class="price">R$ 15,99 <span>R$20,99</span></div>  -->
+          <!-- <div class="price">R$ 15,99 <span>R$20,99</span></div>  -->
         </div>
 
         <div class="box-menu">
@@ -135,7 +134,6 @@
           <!-- <div class="price">R$ 15,99 <span>R$20,99</span></div> -->
         </div>
 
-        
         <div class="box-menu" id="salgados">
           <a href="cardapio.html"><img src="img/torta.png" alt="item-1" /></a>
           <h3>Salgados</h3>
@@ -281,7 +279,7 @@
         </div>
       </div>
 
-      <section class="space" id="space" style="margin-top: 40px;">
+      <section class="space" id="space" style="margin-top: 40px">
         <h2 class="tittle">NOSSO <span> ESPAÇO</span></h2>
         <div class="row">
           <div class="container-image">
@@ -300,13 +298,15 @@
         </div>
       </section>
     </section>
-    
+
     <section class="address" id="address">
       <h2 class="tittle">ENDEREÇO E <span> FUNCIONAMENTO</span></h2>
       <div class="container-form">
         <iframe
-          class="map"
-          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15667.151384329529!2d-37.050601!3d-10.97938!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x71ab13afd866505%3A0xbfae1878dfdd652e!2sCasa%20Caf%C3%A9!5e0!3m2!1spt-BR!2sbr!4v1735561352078!5m2!1spt-BR!2sbr"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d234005.23400400786!2d-46.99321540546875!3d-23.5924312!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce50cd22bb0037%3A0xbce55ea4a57cc613!2sMicrosoft%20Brazil!5e0!3m2!1spt-BR!2sbr!4v1753137840586!5m2!1spt-BR!2sbr"
+          width="530"
+          height="166"
+          style="border: 0"
           allowfullscreen=""
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
@@ -343,7 +343,7 @@
                 src="https://img.icons8.com/ios-filled/30/ffffff/phone.png"
                 alt="phone"
             /></span>
-            <p>(79) 3223-3044</p>
+            <p>(79) 3500-0000</p>
           </div>
         </form>
       </div>
@@ -374,42 +374,41 @@
     ></script>
     <script>
       // smooth-scroll.js - Compatível com navegação entre páginas
-    document.addEventListener('DOMContentLoaded', function() {
+      document.addEventListener("DOMContentLoaded", function () {
         // Função para rolar suavemente para o elemento alvo
         function smoothScrollTo(targetId) {
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                targetElement.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            targetElement.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
         }
 
         // Verifica o hash na URL ao carregar a página (para links entre páginas)
         if (window.location.hash) {
-            smoothScrollTo(window.location.hash);
+          smoothScrollTo(window.location.hash);
         }
 
         // Configura os cliques em links âncora
-        document.querySelectorAll('a[href*="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                const href = this.getAttribute('href');
-                const isLinkParaOutraPagina = href.includes('.html#'); // Ex: "cardapio.html#cha-gourmet"
-                
-                if (isLinkParaOutraPagina) {
-                    // Links entre páginas: deixe o navegador navegar normalmente
-                    return true;
-                } else if (href.startsWith('#')) {
-                    // Links na mesma página: scroll suave
-                    e.preventDefault();
-                    smoothScrollTo(href);
-                    history.pushState(null, null, href);
-                }
-            });
-        });
-    });
-    </script>
+        document.querySelectorAll('a[href*="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            const href = this.getAttribute("href");
+            const isLinkParaOutraPagina = href.includes(".html#"); // Ex: "cardapio.html#cha-gourmet"
 
+            if (isLinkParaOutraPagina) {
+              // Links entre páginas: deixe o navegador navegar normalmente
+              return true;
+            } else if (href.startsWith("#")) {
+              // Links na mesma página: scroll suave
+              e.preventDefault();
+              smoothScrollTo(href);
+              history.pushState(null, null, href);
+            }
+          });
+        });
+      });
+    </script>
   </body>
 </html>
